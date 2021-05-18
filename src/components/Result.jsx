@@ -8,7 +8,7 @@ const Result = () => {
 
   return (
     <div>
-      Result
+      <h2>Result</h2>
       {news.map((news) => (
         <div>{news.title}</div>
       ))}

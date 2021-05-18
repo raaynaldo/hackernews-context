@@ -2,9 +2,9 @@ import { createContext, useState } from 'react';
 
 export const NewsContext = createContext();
 
-export default ({ children }) => {
+const NewsProvider = ({ children }) => {
   const [news, setNews] = useState(['hello', 'test', 'cool']);
-  const [histories] = useState([]);
+  const [histories, setHistories] = useState([]);
 
   const fetchData = (keySearch) => {
     fetch('https://hn.algolia.com/api/v1/search?query=' + keySearch)
@@ -12,6 +12,7 @@ export default ({ children }) => {
       .then((data) => {
         console.log(data);
         setNews(data.hits);
+        setHistories((prevState) => [...prevState, keySearch]);
       });
   };
 
@@ -23,3 +24,5 @@ export default ({ children }) => {
     </NewsContext.Provider>
   );
 };
+
+export default NewsProvider;
