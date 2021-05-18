@@ -10,7 +10,7 @@ const Result = () => {
     <div>
       Result
       {news.map((news) => (
-        <div>{news}</div>
+        <div>{news.title}</div>
       ))}
     </div>
   );
